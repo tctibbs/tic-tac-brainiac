@@ -1,0 +1,6 @@
+config/
+artifacts/
+
+*toml
+*.pylintrc
+*.pyc

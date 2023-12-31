@@ -1,0 +1,73 @@
+@startuml Architecture
+
+skinparam linetype ortho
+
+skinparam package {
+    BackgroundColor Black
+    BorderColor #FF007F
+    FontColor #3F00FF
+    ArrowColor #FFD300
+}
+
+skinparam class {
+    BackgroundColor #FFD300
+    BorderColor #3F00FF
+    FontColor #3F00FF
+    ArrowColor #FF007F
+}
+
+skinparam stereotypeCBackgroundColor #FFD300
+skinparam default {
+    BackgroundColor Black
+    FontColor #3F00FF
+}
+
+skinparam Arrow {
+    Color #3F00FF
+}
+
+package model {
+    class Game
+}
+
+package agent {
+    class Agent
+    class HumanAgent extends Agent
+    class RandomAgent extends Agent
+    class MatchboxAgent extends Agent
+
+    Agent --> Game
+}
+
+package controller {
+    class Controller
+    class GamePublisher
+    class GameSubscriber
+
+    GameSubscriber --> Game
+    GamePublisher --> GameSubscriber
+    Controller --> GamePublisher
+    Controller --> Game
+    controller --> Agent 
+}
+
+package view {
+    class View extends GameSubscriber
+    class ConsoleView extends View
+}
+
+package statistics {
+    class StatisticsTracker extends GameSubscriber
+    class WinTracker extends StatisticsTracker
+    class WinRateTracker extends WinTracker
+    class WinStreakTracker extends WinTracker
+    
+    class BatchWinTracker extends StatisticsTracker
+
+    class RollingWinTracker extends StatisticsTracker
+    class WinRateRollingTracker extends RollingWinTracker
+
+    class GameLengthTracker extends StatisticsTracker
+}
+
+@enduml
