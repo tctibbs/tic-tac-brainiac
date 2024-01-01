@@ -21,8 +21,8 @@ def main():
     statistics_tracker = [
         WinTracker(),
         WinRateTracker(),
-        BatchWinTracker(batch_size=100),
-        RollingWinRateTracker(window_size=100),
+        BatchWinTracker(batch_size=250),
+        RollingWinRateTracker(window_size=250),
         GameLengthTracker(),
         WinStreakTracker(),
     ]
