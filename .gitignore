@@ -1,4 +1,5 @@
 config/
+artifacts/
 
 *toml
 *.pylintrc

@@ -1,4 +1,4 @@
-![Tic Tac Brainiac Header](artifacts/TicTacBrainiacHeader.jpeg)
+![Tic Tac Brainiac Header](assets/TicTacBrainiacHeader.jpeg)
 
 # Tic Tac Brainiac
 
@@ -25,17 +25,17 @@ Configure and play Tic-Tac-Toe games using the Command Line Interface (CLI) with
 python your_script.py --games 10000 --player1 random --player2 ai
 ```
 
-![CLI Example](./artifacts/CLI_example.gif)
+![CLI Example](./assets/CLI_example.gif)
 
 ## Example Statistics 
 
 Statistics with X as Random Agent, O as Matchbox Agent.
 
-| ![Statistics 1](artifacts/win_stats.png) | ![Statistics 2](artifacts/win_rate_stats.png) | ![Statistics 3](artifacts/win_stats_by_batch.png) |
+| ![Statistics 1](assets/win_stats.png) | ![Statistics 2](assets/win_rate_stats.png) | ![Statistics 3](assets/win_stats_by_batch.png) |
 | --- | --- | --- |
-| ![Statistics 4](artifacts/rolling_win_rate_stats.png) | ![Statistics 5](artifacts/game_length_stats.png) | ![Statistics 6](artifacts/win_streak_stats.png) |
+| ![Statistics 4](assets/rolling_win_rate_stats.png) | ![Statistics 5](assets/game_length_stats.png) | ![Statistics 6](assets/win_streak_stats.png) |
 
 
 ## Architecture Diagram
 
-![Architecture Diagram](artifacts/architecture.png)
+![Architecture Diagram](assets/architecture.png)
