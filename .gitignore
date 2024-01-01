@@ -1,5 +1,6 @@
 config/
 artifacts/
+__pycache__/
 
 *toml
 *.pylintrc
