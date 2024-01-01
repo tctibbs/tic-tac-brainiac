@@ -1,31 +1,31 @@
 @startuml Architecture
 
 skinparam linetype ortho
+skinparam backgroundColor #3F00FF
 
+' Package Styling
 skinparam package {
-    BackgroundColor Black
-    BorderColor #FF007F
-    FontColor #3F00FF
-    ArrowColor #FFD300
-}
-
-skinparam class {
     BackgroundColor #FFD300
+    BorderColor #FF007F
+    FontColor Black
+}
+
+' Class Styling
+skinparam class {
+    BackgroundColor #FF007F
     BorderColor #3F00FF
-    FontColor #3F00FF
-    ArrowColor #FF007F
+    FontColor Black
+    ArrowColor #3F00FF
+    ArrowThickness 2
 }
 
-skinparam stereotypeCBackgroundColor #FFD300
-skinparam default {
-    BackgroundColor Black
-    FontColor #3F00FF
-}
-
+' Arrow Styling
 skinparam Arrow {
     Color #3F00FF
+    Thickness 2
 }
 
+' Packages and Classes
 package model {
     class Game
 }
@@ -35,8 +35,7 @@ package agent {
     class HumanAgent extends Agent
     class RandomAgent extends Agent
     class MatchboxAgent extends Agent
-
-    Agent --> Game
+    Agent -[#FF007F]--> Game
 }
 
 package controller {
@@ -44,30 +43,29 @@ package controller {
     class GamePublisher
     class GameSubscriber
 
-    GameSubscriber --> Game
     GamePublisher --> GameSubscriber
     Controller --> GamePublisher
-    Controller --> Game
-    controller --> Agent 
+    GameSubscriber -[#FF007F]--> Game
+    Controller -[#FF007F]--> Game
+    Controller -[#FF007F]--> Agent 
 }
 
 package view {
-    class View extends GameSubscriber
+    class View
     class ConsoleView extends View
+    View -[#FF007F]--|> GameSubscriber
 }
 
 package statistics {
-    class StatisticsTracker extends GameSubscriber
+    class StatisticsTracker
     class WinTracker extends StatisticsTracker
     class WinRateTracker extends WinTracker
     class WinStreakTracker extends WinTracker
-    
     class BatchWinTracker extends StatisticsTracker
-
     class RollingWinTracker extends StatisticsTracker
     class WinRateRollingTracker extends RollingWinTracker
-
     class GameLengthTracker extends StatisticsTracker
+    StatisticsTracker -[#FF007F]-|> GameSubscriber
 }
 
 @enduml
