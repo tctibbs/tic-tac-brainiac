@@ -69,24 +69,19 @@ def parse_args():
         "--player1",
         choices=["human", "ai", "random"],
         default="random",
-        help="Player 1 type",
+        help="Player 1's agent type",
     )
     parser.add_argument(
         "--player2",
         choices=["human", "ai", "random"],
         default="ai",
-        help="Player 2 type",
+        help="Player 2's agent type",
     )
     parser.add_argument(
         "--board-size",
         type=int,
         default=3,
         help="Size of the game board",
-    )
-    parser.add_argument(
-        "--suppress",
-        action="store_true",
-        help="Suppress display of game board and messages",
     )
     return parser.parse_args()
 
