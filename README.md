@@ -1,2 +1,41 @@
-# tic-tac-brainiac
-Tic Tac Toe game utilizing matchbox learning. 
+![Tic Tac Brainiac Header](artifacts/TicTacBrainiacHeader.jpeg)
+
+# Tic Tac Brainiac
+
+Tic Tac Brainiac is an agent-based Tic Tac Toe game where various types of agents compete against each other across multiple rounds. After the rounds are complete, the game presents comprehensive statistics about the outcomes.
+
+## Agent Types
+
+- **RandomAgent**: Makes moves randomly.
+- **MatchboxAgent**: Employs matchbox learning to evolve its strategy.
+- **HumanAgent**: Relies on user input for its moves.
+
+## Tic Tac Brainiac CLI
+
+Configure and play Tic-Tac-Toe games using the Command Line Interface (CLI) with the following options:
+
+- `--games`: Specifies the number of games to play.
+- `--player1 {human, ai, random}`: Sets the agent type for Player 1 (default: `random`).
+- `--player2 {human, ai, random}`: Sets the agent type for Player 2 (default: `ai`).
+- `--board-size`: Determines the size of the game board (default: `3`).
+
+### Example Usage
+
+```bash
+python your_script.py --games 10000 --player1 random --player2 ai
+```
+
+![CLI Example](artifacts/CLI_Example.gif)
+
+## Example Statistics 
+
+Statistics saved from random agent vs matchbox agent.
+
+| ![Statistics 1](artifacts/win_statistics.png) | ![Statistics 2](artifacts/win_rate.png) | ![Statistics 3](artifacts/win_statistics_by_batch.png) |
+| --- | --- | --- |
+| ![Statistics 4](artifacts/rolling_win_rate_100.png) | ![Statistics 5](artifacts/game_length_statistics.png) | ![Statistics 6](artifacts/win_streak_statistics.png) |
+
+
+## Architecture
+
+![Architecture Diagram](artifacts/architecture.png)
