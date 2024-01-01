@@ -37,7 +37,8 @@ class GameLengthTracker(StatisticsTracker):
             average_length = sum(self.game_lengths[-self.window_size :]) / self.window_size
             self.average_game_lengths.append(average_length)
         else:
-            self.average_game_lengths.append(self.current_game_length / self.total_games)
+            average_length = sum(self.game_lengths) / self.total_games
+            self.average_game_lengths.append(average_length)
 
         self.current_game_length = 0
 
