@@ -28,9 +28,9 @@ class RollingWinRateTracker(RollingWinTracker):
     def update_statistics_on_move(self, game: TicTacToe) -> None:
         """Update rolling win rate statistics based on the move of a game."""
 
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display rolling win rate statistics plots."""
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=figsize)
 
         total_games_x_axis = range(1, self.total_games + 1)
         for player in [GameSymbol.X, GameSymbol.O]:
@@ -40,10 +40,10 @@ class RollingWinRateTracker(RollingWinTracker):
         plt.legend()
         plt.xlabel("Total Games")
         plt.ylabel("Rate")
-        plt.title(f"Rolling Win Rate (Window Size: {self.window_size} Games)")
+        plt.title(f"Rolling Win Rate Stats (Window Size: {self.window_size} Games)")
         plt.grid(True)
 
-        filename = directory / f"rolling_win_rate_{self.window_size}" if directory else None
+        filename = directory / "rolling_win_rate_stats.png" if directory else None
         self._display_plot(filename, display)
 
     def calculate_rolling_win_rate(self, player: GameSymbol) -> float:

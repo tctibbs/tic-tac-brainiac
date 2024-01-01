@@ -36,16 +36,17 @@ class WinStreakTracker(WinTracker):
             for player in self.current_streaks:
                 self.current_streaks[player] = 0
 
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display win streak statistics plots."""
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=figsize)
+
         for player in [GameSymbol.X, GameSymbol.O]:
             plt.bar([player.value], self.longest_streaks[player], label="Longest Streak")
 
         plt.xlabel("Players")
         plt.ylabel("Win Streaks")
-        plt.title("Win Streak Statistics")
+        plt.title("Win Streak Stats")
         plt.legend()
 
-        filename = directory / "win_streak_statistics.png" if directory else None
+        filename = directory / "win_streak_stats.png" if directory else None
         self._display_plot(filename, display)

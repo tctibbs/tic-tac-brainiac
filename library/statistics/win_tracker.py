@@ -32,21 +32,22 @@ class WinTracker(StatisticsTracker):
     def update_statistics_on_move(self, game: TicTacToe) -> None:
         """Update win statistics based on the move of a game."""
 
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display win statistics plots."""
+        plt.figure(figsize=figsize)
+
         players = [GameSymbol.X, GameSymbol.O]
 
         player_labels = [player.value for player in players] + ["Ties"]
         wins_and_ties = [self.wins[player] for player in players] + [self.ties]
 
-        plt.figure(figsize=(8, 6))
         for i, label in enumerate(player_labels):
             plt.bar(label, wins_and_ties[i], label=f"{label}")
 
         plt.xlabel("Players")
         plt.ylabel("Number of Wins")
-        plt.title("Win Statistics")
+        plt.title("Win Stats")
         plt.legend()
 
-        filename = directory / "win_statistics.png" if directory else None
+        filename = directory / "win_stats.png" if directory else None
         self._display_plot(filename, display)

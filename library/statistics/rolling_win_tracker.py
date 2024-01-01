@@ -38,9 +38,9 @@ class RollingWinTracker(StatisticsTracker):
     def update_statistics_on_move(self, game: TicTacToe) -> None:
         """Update rolling win statistics based on the move of a game."""
 
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display rolling win statistics plots."""
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=figsize)
 
         players = [GameSymbol.X, GameSymbol.O]
         total_games_x_axis = range(1, self.total_games + 1)
@@ -56,8 +56,8 @@ class RollingWinTracker(StatisticsTracker):
 
         plt.xlabel("Total Games")
         plt.ylabel(f"Number of Wins/Ties in Last {self.window_size} Games")
-        plt.title(f"Rolling Win and Tie Statistics (Window Size: {self.window_size} Games)")
+        plt.title(f"Rolling Win Stats (Window Size: {self.window_size} Games)")
         plt.legend()
 
-        filename = directory / f"rolling_win_statistics_window_size_{self.window_size}" if directory is None else None
+        filename = directory / "rolling_win_stats.png" if directory is None else None
         self._display_plot(filename, display)

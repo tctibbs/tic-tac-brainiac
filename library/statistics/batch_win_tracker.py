@@ -38,13 +38,13 @@ class BatchWinTracker(StatisticsTracker):
     def update_statistics_on_move(self, game: TicTacToe) -> None:
         """Update win statistics based on the move of a game."""
 
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display win statistics plots for each batch on the same plot."""
         num_batches = len(self.wins)
         bar_width = 0.2
         bar_positions = range(num_batches)
 
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=figsize)
 
         # First three default colors in matplotlib's color theme
         colors = plt.rcParams["axes.prop_cycle"].by_key()["color"][:3]
@@ -60,9 +60,9 @@ class BatchWinTracker(StatisticsTracker):
 
         plt.xlabel("Batches")
         plt.ylabel("Number of Games")
-        plt.title("Win Statistics by Batch")
+        plt.title("Win Stats by Batch")
         plt.xticks([pos * bar_width for pos in bar_positions], [f"{i + 1}" for i in bar_positions], rotation="vertical", fontsize=4)
         plt.legend(["X Wins", "O Wins", "Ties"])
 
-        filename = directory / "win_statistics_by_batch.png" if directory else None
+        filename = directory / "win_stats_by_batch.png" if directory else None
         self._display_plot(filename, display)

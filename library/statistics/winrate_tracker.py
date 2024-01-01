@@ -33,9 +33,9 @@ class WinRateTracker(WinTracker):
     def update_statistics_on_move(self, game: TicTacToe) -> None:
         """Update win rate statistics based on the move of a game."""
 
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display win rate statistics plots."""
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=figsize)
 
         plt.plot(self.winrates[GameSymbol.X], label="X Win Rate")
         plt.plot(self.winrates[GameSymbol.O], label="O Win Rate")
@@ -44,10 +44,10 @@ class WinRateTracker(WinTracker):
         plt.legend()
         plt.xlabel("Games Played")
         plt.ylabel("Rate")
-        plt.title("Win Rates")
+        plt.title("Win Rate Stats")
         plt.grid(True)
 
-        filename = directory / "win_rate" if directory else None
+        filename = directory / "win_rate_stats.png" if directory else None
         self._display_plot(filename, display)
 
     def calculate_win_rate(self, player: GameSymbol) -> float:

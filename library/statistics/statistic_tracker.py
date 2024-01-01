@@ -31,7 +31,7 @@ class StatisticsTracker(GameSubscriber, ABC):
         """Update statistics based on the move of a game."""
 
     @abstractmethod
-    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False) -> None:
+    def plot_statistics(self, directory: Optional[Path] = None, display: bool = False, figsize: tuple = (8, 6)) -> None:
         """Generate and optionally save or display statistics plots."""
 
     def _display_plot(self, filename: Optional[Path] = None, display: bool = False) -> None:
