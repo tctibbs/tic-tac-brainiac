@@ -1,4 +1,4 @@
-"""Matchbox agent module using matchbox-rl library."""
+"""Matchbox agent module."""
 from __future__ import annotations
 
 from matchbox import Bead, Engine, LearningConfig
@@ -15,8 +15,8 @@ POSITION_COLORS = [
     "yellow",
     "magenta",
     "cyan",
-    "#FF8800",
-    "#FF69B4",
+    "orange",
+    "pink",
     "gray",
 ]
 
