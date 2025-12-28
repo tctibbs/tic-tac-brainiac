@@ -2,6 +2,7 @@ config/
 artifacts/
 __pycache__/
 
-*toml
+*.toml
+!pyproject.toml
 *.pylintrc
 *.pyc

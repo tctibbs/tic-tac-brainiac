@@ -22,7 +22,7 @@ POSITION_COLORS = [
 
 
 class MatchboxAgent(Agent):
-    """Agent that uses matchbox-rl Engine for learning."""
+    """Matchbox learning agent."""
 
     def __init__(self, symbol: GameSymbol, engine: Engine) -> None:
         super().__init__(symbol)
@@ -67,15 +67,24 @@ class MatchboxAgent(Agent):
         Returns:
             The cell index (0-8) to place the symbol.
         """
+        import random
+
         state_key = self._board_to_string(game.board)
+        empty_cells = game.empty_cells()
 
         while True:
-            action = self._engine.get_move(state_key)
-            if action in game.empty_cells():
+            try:
+                action = self._engine.get_move(state_key)
+            except RuntimeError:
+                # Matchbox is empty - pick randomly from valid moves
+                return random.choice(empty_cells)
+
+            if action in empty_cells:
                 return action
-            # Penalize invalid move heavily
+            # Remove all beads for this invalid position
             bead = next(b for b in self._engine.available_beads if b.action == action)
-            self._engine.boxes[state_key].update(bead, -100, self._engine.config.max_beads)
+            current = self._engine.boxes[state_key].beads[bead]
+            self._engine.boxes[state_key].update(bead, -current, self._engine.config.max_beads)
             self._engine.history.pop()
 
     def update_strategy(self, winner: GameSymbol) -> None:
