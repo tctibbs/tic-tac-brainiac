@@ -1,6 +1,8 @@
 config/
 artifacts/
 __pycache__/
+.venv/
+.DS_Store
 
 *.toml
 !pyproject.toml
