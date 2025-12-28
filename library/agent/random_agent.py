@@ -14,3 +14,4 @@ class RandomAgent(Agent):
 
     def update_strategy(self, winner: GameSymbol) -> None:
         """Update the Agent's strategy based on the game outcome."""
+        pass
