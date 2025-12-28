@@ -1,7 +1,9 @@
 config/
 artifacts/
 __pycache__/
+.venv/
+.DS_Store
 
-*toml
-*.pylintrc
+*.toml
+!pyproject.toml
 *.pyc

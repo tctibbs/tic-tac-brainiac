@@ -22,7 +22,7 @@ Configure and play Tic-Tac-Toe games using the Command Line Interface (CLI) with
 ### Example Usage
 
 ```bash
-python your_script.py --games 10000 --player1 random --player2 ai
+python main.py --games 10000 --player1 random --player2 ai
 ```
 
 ![CLI Example](./assets/CLI_example.gif)

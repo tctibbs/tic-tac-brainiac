@@ -1,4 +1,4 @@
-"""Modue for the GameSubscriber interface"""
+"""Module for the GameSubscriber interface."""
 from abc import ABC, abstractmethod
 
 from library.model.game import TicTacToe
