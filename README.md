@@ -4,6 +4,14 @@
 
 Tic Tac Brainiac is an agent-based Tic Tac Toe game where various types of agents compete against each other across multiple rounds. After the rounds are complete, the game presents comprehensive statistics about the outcomes.
 
+## Watch it learn
+
+![MatchboxAgent learning tic-tac-toe](assets/learning_demo.gif)
+
+The MatchboxAgent starts with no preference and learns by MENACE-style tabular updates ([matchbox-rl](https://github.com/tctibbs/matchbox-rl)). On the left, its first-move confidence (the bead counts for the empty board) sharpens from near-uniform onto a strong opening. On the right, its rolling win and loss rates against a random opponent pull apart. These are real snapshots from one 8000-game run, sped up; every value shown is measured.
+
+Regenerate with `uv run python tools/generate_demo.py`.
+
 ## Agent Types
 
 - **RandomAgent**: Makes moves randomly.
